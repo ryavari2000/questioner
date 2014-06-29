@@ -43,7 +43,7 @@ body {
 		<div class="jumbotron">
 			<div>
 				<h1>Questioner</h1>
-				<p>blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah</p>
+				<p>addning blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah</p>
 			</div>
 
 			<a class="btn btn-primary" href="signup.html">Signup » </a> <a
