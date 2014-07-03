@@ -20,7 +20,7 @@
   <script src="jquery-1.8.3.js"></script>
 
 </head>
-<body ng-controller="ContactListCtrl">
+<body ng-controller="ContactListCtrl as clist">
 
   <br/>
   
@@ -42,37 +42,35 @@
       </div>
       <div class="col-md-10">
         <!--Body content-->
-         <h3>{{title}}</h3>
-        <table class="table table-bordered table-hover table-condensed">
+         <h3 ng-show="title">{{title}} <small>({{email}})</small></h3>
+         <section ng-show="title" ng-init="tab = 1">
+           <ul class="nav nav-pills">
+             <li ng-class="{active:tab===1}"><a href ng-click="tab = 1">All</a></li>
+             <li ng-class="{active:tab===2}"><a href ng-click="tab = 2">Selected</a></li>
+           </ul>
+         </section>
+        <div class="panel pre-scrollable" ng-show="tab === 1">
+        <br/>
+        <table ng-show="title" class="table table-bordered table-hover table-condensed ">
           <tr>
-            <th>
-             &nbsp
-            </th>
-            <th>
-             Name
-            </th>
-            <th>
-             Phone
-            </th>
-            <th>
-             Email
-            </th>
+            <th>&nbsp</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
           </tr>
           <tr ng-repeat="contact in contacts | filter:query | orderBy:orderProp">
               <td>
                <input type="checkbox" class="form-control"/>
               </td>
-              <td>
-                {{contact.title.$t}} 
-              </td>
-              <td>
-                {{ contact.gd$phoneNumber[0].$t }}  
-              </td>
-              <td>
-                {{ contact.gd$email[0].address }}
-              </td> 
+              <td>{{contact.title.$t}}</td>
+              <td>{{ contact.gd$phoneNumber[0].$t }}</td>
+              <td>{{ contact.gd$email[0].address }}</td> 
           </tr>
         </table>
+        </div>
+        <div class="panel" ng-show="tab === 2">
+          Show selected contacts ... //TODO:
+        </div>
       </div>
     </div>
   </div>
