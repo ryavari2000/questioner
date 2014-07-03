@@ -40,7 +40,7 @@
 		  </select>
 		  </div>
       </div>
-      <div class="col-md-10">
+      <div class="col-md-10" ng-show="title">
         <!--Body content-->
          <h3 ng-show="title">{{title}} <small>({{email}})</small></h3>
          <section ng-show="title" ng-init="tab = 1">
@@ -60,7 +60,7 @@
           </tr>
           <tr ng-repeat="contact in contacts | filter:query | orderBy:orderProp">
               <td>
-               <input type="checkbox" class="form-control"/>
+               <input ng-show="contact.gd$email[0].address" type="checkbox" class="form-control"/>
               </td>
               <td>{{contact.title.$t}}</td>
               <td>{{ contact.gd$phoneNumber[0].$t }}</td>
