@@ -11,8 +11,6 @@
   <script src="angular-1.3.0-beta.14/angular.js"></script>
   <script src="angular-1.3.0-beta.14/angular-route.js"></script>
 
-  <script src="js/contacts.js"></script>
-  
   <script src="js/app.js"></script>
   <script src="js/controllers.js"></script>
 
@@ -59,7 +57,7 @@
             <th>Phone</th>
             <th>Email</th>
           </tr>
-          <tr ng-repeat="contact in contacts | filter:search ">
+          <tr ng-repeat="contact in contacts | filter:search | orderBy:orderProp">
               <td>
                <input ng-show="contact.gd$email[0].address" type="checkbox" class="form-control"/>
               </td>

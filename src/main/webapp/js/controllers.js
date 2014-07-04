@@ -11,12 +11,14 @@ var contactsApp = angular.module('contactsApp', []);
 
 contactsApp.controller('ContactListCtrl', function ($scope, $http)  {
     
+	
 	$scope.authorize = function() {
       gapi.client.setApiKey(apiKey);
       gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthResult);
 	};
 	
-    function handleAuthResult(authResult) {
+    
+	function handleAuthResult(authResult) {
     	
      $http.get('https://www.google.com/m8/feeds/contacts/default/full?alt=json&max-results=1000&access_token='+authResult.access_token).success(function(data) {
     	   $scope.contacts = []; 
