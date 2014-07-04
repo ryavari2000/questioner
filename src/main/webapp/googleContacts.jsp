@@ -60,7 +60,7 @@
           </tr>
           <tr ng-repeat="contact in contacts | filter:search | orderBy:orderProp">
               <td>
-               <input ng-show="contact.gd$email[0].address" type="checkbox" class="form-control"/>
+               <input type="checkbox" class="form-control" ng-click="addEmail(contact)"/>
               </td>
               <td>{{contact.title.$t}}</td>
               <td>{{ contact.gd$phoneNumber[0].$t }}</td>
@@ -69,7 +69,19 @@
         </table>
         </div>
         <div class="panel" ng-show="tab === 2">
-          Show selected contacts ... //TODO:
+        <br/>
+        <table class="table table-bordered table-hover table-condensed ">
+          <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+          </tr>
+          <tr ng-repeat="contact in selectedContacts">
+              <td>{{contact.title.$t}}</td>
+              <td>{{ contact.gd$phoneNumber[0].$t }}</td>
+              <td>{{ contact.gd$email[0].address }}</td> 
+          </tr>
+        </table>
         </div>
       </div>
     </div>

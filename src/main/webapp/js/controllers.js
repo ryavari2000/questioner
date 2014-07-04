@@ -11,6 +11,7 @@ var contactsApp = angular.module('contactsApp', []);
 
 contactsApp.controller('ContactListCtrl', function ($scope, $http)  {
     
+	$scope.selectedContacts = []; 
 	
 	$scope.authorize = function() {
       gapi.client.setApiKey(apiKey);
@@ -38,6 +39,21 @@ contactsApp.controller('ContactListCtrl', function ($scope, $http)  {
      
     }
     
+	
+	$scope.addEmail = function ( contact ) {
+		
+		// if exist dont add
+		for (  var i = 0 ; i < $scope.selectedContacts.length ; ++ i  ) {
+		  if ( contact.gd$email[0].address ==  $scope.selectedContacts[i].gd$email[0].address) {
+			  return;
+		  }
+		}
+		// if not exist add it
+		var p = {};
+		angular.copy( contact , p );
+		$scope.selectedContacts.push(p);
+	};
+	
     
  });
 
