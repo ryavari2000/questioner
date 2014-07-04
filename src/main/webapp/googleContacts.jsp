@@ -7,6 +7,7 @@
   <title>Questioners</title>
   <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
   <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css">
+  <link rel="stylesheet" href="css/animation.css">
 
   <script src="angular-1.3.0-beta.14/angular.js"></script>
   <script src="angular-1.3.0-beta.14/angular-route.js"></script>
