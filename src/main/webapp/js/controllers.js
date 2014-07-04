@@ -19,7 +19,16 @@ contactsApp.controller('ContactListCtrl', function ($scope, $http)  {
     function handleAuthResult(authResult) {
     	
      $http.get('https://www.google.com/m8/feeds/contacts/default/full?alt=json&max-results=1000&access_token='+authResult.access_token).success(function(data) {
-    	   $scope.contacts = data.feed.entry; 
+    	   $scope.contacts = []; 
+    	   
+    	   for ( var i = 0 ; i < data.feed.entry.length ; ++ i ) {
+    		   if ( data.feed.entry[i].gd$email != undefined ){
+    		    var p = {};
+    		    angular.copy( data.feed.entry[i] , p );
+    		    $scope.contacts.push(p);
+    		   }
+    	   }
+    	   
     	   $scope.title = data.feed.title.$t;
     	   $scope.email = data.feed.id.$t;
     	   $scope.Total = data.feed.openSearch$totalReasults;

@@ -31,7 +31,7 @@
 		  <div class="form-group">
 		  <button ng-click="authorize()" class="btn btn-default btn-sm" role="button">Get My Google Contacts</button>
 		  <label>Search:</label>
-		  <input class="form-control input-sm" ng-model="query" placeholder="input filter">
+		  <input class="form-control input-sm" ng-model="search.$" />
 		  
 		  <label>Sort by:</label>
 		  <select ng-model="orderProp" class="form-control input-sm">
@@ -49,7 +49,8 @@
              <li ng-class="{active:tab===2}"><a href ng-click="tab = 2">Selected</a></li>
            </ul>
          </section>
-        <div class="panel pre-scrollable" ng-show="tab === 1">
+        
+        <div class="panel" ng-show="tab === 1">
         <br/>
         <table ng-show="title" class="table table-bordered table-hover table-condensed ">
           <tr>
@@ -58,7 +59,7 @@
             <th>Phone</th>
             <th>Email</th>
           </tr>
-          <tr ng-repeat="contact in contacts | filter:query | orderBy:orderProp">
+          <tr ng-repeat="contact in contacts | filter:search ">
               <td>
                <input ng-show="contact.gd$email[0].address" type="checkbox" class="form-control"/>
               </td>
